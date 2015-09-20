@@ -1,18 +1,21 @@
-package zx.soft.rpc.core;
+package zx.soft.rpc.connect;
 
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 
+import zx.soft.rpc.bean.ByteBufferBackedInputStream;
+import zx.soft.rpc.bean.ByteBufferBackedOutputStream;
+
 public class ConnectionHandler implements Runnable {
 
 	private final ByteBuffer buffer = ByteBuffer.allocate(5125);
 
-	private final AcceptLoop ref;
+	private final ConnectionAcceptLoop ref;
 	private final SelectionKey key;
 
-	public ConnectionHandler(SelectionKey key, AcceptLoop ref) {
+	public ConnectionHandler(SelectionKey key, ConnectionAcceptLoop ref) {
 		this.key = key;
 		this.ref = ref;
 		key.interestOps(key.interestOps() & (~SelectionKey.OP_READ));

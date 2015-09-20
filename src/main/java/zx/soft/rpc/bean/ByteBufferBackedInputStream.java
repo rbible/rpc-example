@@ -1,4 +1,4 @@
-package zx.soft.rpc.core;
+package zx.soft.rpc.bean;
 
 import java.io.IOException;
 import java.io.InputStream;

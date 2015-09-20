@@ -1,9 +1,9 @@
-package zx.soft.rpc.core;
+package zx.soft.rpc.serial;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public interface Serializer {
+public interface ISerializer {
 
 	Object readObject(InputStream inputStream, Class<?> type);
 

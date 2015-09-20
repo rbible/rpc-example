@@ -1,4 +1,4 @@
-package zx.soft.rpc.core;
+package zx.soft.rpc.serial;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
-public class JavaSerializer implements Serializer {
+public class JavaSerializer implements ISerializer {
 
 	private static final Object[] emptyObjectArray = new Object[0];
 

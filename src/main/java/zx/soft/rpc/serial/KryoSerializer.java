@@ -1,4 +1,4 @@
-package zx.soft.rpc.core;
+package zx.soft.rpc.serial;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,7 +7,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
-public class KryoSerializer implements Serializer {
+public class KryoSerializer implements ISerializer {
 
 	private final ThreadLocal<Kryo> kryo = new ThreadLocal<Kryo>() {
 
