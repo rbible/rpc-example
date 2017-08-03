@@ -24,7 +24,7 @@ public class RemoteObjectInvocationHandler implements InvocationHandler {
     public RemoteObjectInvocationHandler(String remoteHost, int remotePort, Class<?> serviceType, ISerializer serializer) {
         this.remoteHost = remoteHost;
         this.remotePort = remotePort;
-        method2CodeMap = Utils.getMethod2CodeMap(serviceType);
+        this.method2CodeMap = Utils.getMethod2CodeMap(serviceType);
         this.serializer = serializer;
     }
 
@@ -34,7 +34,7 @@ public class RemoteObjectInvocationHandler implements InvocationHandler {
         try {
             connection = getConnection();
             SocketChannel channel = connection.getChannel();
-            
+
             ByteBuffer buffer = connection.getBuffer();
             buffer.clear();
             buffer.position(4);
@@ -42,7 +42,7 @@ public class RemoteObjectInvocationHandler implements InvocationHandler {
             serializer.writeObjects(new ByteBufferBackedOutputStream(buffer), method.getParameterTypes(), params);
             buffer.putInt(0, buffer.position() - 4);
             buffer.flip();
-            
+
             channel.write(buffer);
             Thread.yield();
 
